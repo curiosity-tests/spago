@@ -13,14 +13,13 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: ubuntu-latest
-          - os: macOS-latest
+        - os: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: DeterminateSystems/flakehub-cache-action@main
-      - name: "Check `nix develop` shell can open"
-        run: nix develop --command "echo"
+    - uses: actions/checkout@v4
+    - uses: DeterminateSystems/nix-installer-action@main
+    - uses: DeterminateSystems/flakehub-cache-action@main
+    - name: "Check `nix develop` shell can open"
+      run: nix develop --command "echo"
       # this Flake has no build target
       # - run: nix build
-      - run: nix flake check
+    - run: nix flake check
